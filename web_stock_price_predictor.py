@@ -14,7 +14,7 @@ end = datetime.now()
 start = datetime(end.year-20,end.month,end.day)
 
 # google_data = yf.download(stock, start, end)
-google_data = yf.download(stock, start, end, auto_adjust=False)
+google_data = yf.download(stock, start, end, auto_adjust=False, session=None)
 if isinstance(google_data.columns, pd.MultiIndex):
     google_data.columns = google_data.columns.get_level_values(0)
 
