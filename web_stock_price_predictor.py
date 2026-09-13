@@ -14,7 +14,11 @@ end = datetime.now()
 start = datetime(end.year-20,end.month,end.day)
 
 # google_data = yf.download(stock, start, end)
-google_data = yf.download(stock, start, end, auto_adjust=False, session=None)
+google_data = yf.Ticker(stock).history(
+    start=start,
+    end=end,
+    auto_adjust=False
+)
 if isinstance(google_data.columns, pd.MultiIndex):
     google_data.columns = google_data.columns.get_level_values(0)
 
