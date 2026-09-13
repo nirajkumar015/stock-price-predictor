@@ -15,7 +15,7 @@ end = datetime.now()
 start = datetime(end.year-20,end.month,end.day)
 
 # google_data = yf.download(stock, start, end)
-session = requests.Session(impersonate="chrome")
+session = requests.Session(impersonate="chrome146")
 
 google_data = yf.Ticker(stock, session=session).history(
     start=start,
