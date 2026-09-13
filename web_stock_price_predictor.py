@@ -4,6 +4,7 @@ import numpy as np
 from keras.models import load_model
 import matplotlib.pyplot as plt
 import yfinance as yf
+from curl_cffi import requests
 
 st.title("Stock price predictor App")
 
@@ -14,7 +15,9 @@ end = datetime.now()
 start = datetime(end.year-20,end.month,end.day)
 
 # google_data = yf.download(stock, start, end)
-google_data = yf.Ticker(stock).history(
+session = requests.Session(impersonate="chrome")
+
+google_data = yf.Ticker(stock, session=session).history(
     start=start,
     end=end,
     auto_adjust=False
